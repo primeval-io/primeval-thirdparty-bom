@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.primeval</groupId>
 	<artifactId>primeval-thirdparty-boms</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<name>Primeval Third-Party BOMs</name>
@@ -15,6 +15,15 @@
 		<name>Primeval</name>
 		<url>http://www.primeval.io</url>
 	</organization>
+
+	<developers>
+		<developer>
+			<id>magnet</id>
+			<name>Simon Chemouil</name>
+			<organization>Lambdacube</organization>
+		</developer>
+	</developers>
+
 
 	<licenses>
 		<license>
@@ -32,5 +41,29 @@
 		<module>primeval-thirdparty-dev-bom</module>
 		<module>primeval-thirdparty-rt-bom</module>
 	</modules>
+
+	<profiles>
+		<profile>
+			<id>sign</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
 
